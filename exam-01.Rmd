@@ -105,6 +105,26 @@ The main data is in the `flights` data frame, but there are additional data sets
 
 1.  **Question 1 (10 points)** - What are the ten most common destinations for flights from NYC airports in 2013?
     Make a table that lists these in descending order of frequency and shows the number of fligts heading to each airport.
+    
+**Answer:**
+The Table below shows the ten most common destinations for flights from NYC airports in 2013 with Chicago O'Hare International Airport as the most frequent with 17,283 flights and Ronald Reagan Washington National Airport rounding out the top 10 with 9,705 flights.
+
+*I used https://nobleaircharter.com/airport-codes-usa/ to show me the corresponding airport to airport code.*
+    
+```{r}
+#| label: top_ten_destinations
+#| eval: TRUE
+
+library(nycflights13)
+
+destination_freq <- table(flights$dest)
+top_ten_destinations <- sort(destination_freq, decreasing = TRUE)[1:10]
+top_ten_table <- data.frame(Destination = names(top_ten_destinations), Frequency = as.vector(top_ten_destinations))
+print(top_ten_table)
+
+```
+
+*Used information from Lab04 to show myself how to sort by frequency.*
 
 2.  **Question 2 (10 points)** - Which airlines have the most flights departing from NYC airports in 2013?
     Make a table that lists these in descending order of frequency and shows the number of flights for each airline.
