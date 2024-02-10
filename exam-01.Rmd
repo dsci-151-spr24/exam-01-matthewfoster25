@@ -130,6 +130,20 @@ print(top_ten_table)
     Make a table that lists these in descending order of frequency and shows the number of flights for each airline.
     In your narrative mention the names of the airlines as well.
     *Hint:* You can use the `airlines` dataset to look up the airline name based on `carrier` code.
+    
+**Answer:**
+The Table below shows the airlines with the most frequent departures from NYC airports in 2013. Number one is UA (United Air Lines Inc.), two is B6 (JetBlue Airways), 3 is EV (ExpressJEt Airlines Inc.), four is DL (Delta Air Lines Inc.), 5 is AA (American Airlines Inc.), 6 is MQ (Envoy Air), 7 is US (US Airways Inc.), 8 is 9E (Endeavor Air Inc.), 9 is WN (Southwest Airlines Co.), 10 is VX (Virgin America), 11 is FL (AirTran Airways Corporation), 12 is AS (Alaska Airlines Inc.), 13 is F9 (Frontier Airlines Inc.), 14 is YV (Mesa Airlines Inc.), 15 is HA (Hawaiian Airlines Inc.), and 16 is OO (SkyWest Airlines Inc.).
+
+```{r}
+#| label: airline_freq
+#| eval: TRUE
+
+airline_freq <- table(flights$carrier)
+sorted_airline_freq <- sort(airline_freq, decreasing = TRUE)
+airline_table <- data.frame(Airline = names(sorted_airline_freq), Frequency = as.vector(sorted_airline_freq))
+print(airline_table)
+
+```
 
 3.  **Question 3 (10 points)** - Consider only flights that have non-missing arrival delay information.
     Your answer should include the name of the carrier in addition to the carrier code and the values asked.
