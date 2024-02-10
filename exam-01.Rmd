@@ -193,6 +193,33 @@ cat("Carrier with the lowest mean arrival delay:", lowest_mean_delay_carrier, "(
 
 4.  **Question 4 (10 points)** - What was the mean temperature at the origin airport on the day with the highest departure delay?
     Your answer should include the name of origin airport, the date with the highest departure delay, and the mean temperature on that day.
+    
+**Answer:**
+The day with the highest departure delay was January 9th, 2013 and it occured at JFK (NY Kennedy) Airport. The temperature on this day was 42.66  degrees Fahrenheit. 
+     
+```{r}
+#| label: temp_delay_day
+#| eval: TRUE
+
+flight_with_highest_delay <- flights[which.max(flights$dep_delay), ]
+
+year <- flight_with_highest_delay$year
+month <- flight_with_highest_delay$month
+day <- flight_with_highest_delay$day
+
+weather_on_date <- weather[weather$origin == flight_with_highest_delay$origin & weather$year == year & weather$month == month & weather$day == day, ]
+
+mean_temp_origin <- mean(weather_on_date$temp)
+
+cat("Date with the highest departure delay:", format(as.Date(paste(year, month, day, sep = "-")), "%Y-%m-%d"), "\n")
+cat("Origin airport:", unique(flight_with_highest_delay$origin), "\n")
+cat("Mean temperature on that day:", round(mean_temp_origin, 2), "degrees Fahrenheit\n")
+
+```
+
+*Used Chapter 13 of R for Data Science to answer Question 4.*
+
+*Used Chapter 17 of R for Data Science to help change my cat for date from 15714 to a proper Year-Month-Date format.*
 
 5.  **Question 5 (15 points)** - Consider breaking the day into four time intervals: 12:01am-6am, 6:01am-12pm, 12:01pm-6pm, 6:01pm-12am.
 
