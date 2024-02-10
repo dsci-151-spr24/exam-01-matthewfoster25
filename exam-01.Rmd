@@ -150,9 +150,46 @@ print(airline_table)
 
     a\.
     Which carrier had the highest mean arrival delay?
+    
+**Answer:**
+The carrier with the highest mean arrival delay of 21.9207 minutes is F9 (Frontier Airlines Inc.).
+
+```{r}
+#| label: highest_mean_arrival
+#| eval: TRUE
+
+non_missing_arrival_delay_flights <- flights[!is.na(flights$arr_delay), ]
+
+mean_arr_delay <- tapply(non_missing_arrival_delay_flights$arr_delay, non_missing_arrival_delay_flights$carrier, mean)
+
+highest_mean_delay_carrier <- names(mean_arr_delay)[which.max(mean_arr_delay)]
+
+highest_mean_delay_value <- max(mean_arr_delay)
+
+cat("Carrier with the highest mean arrival delay:", highest_mean_delay_carrier, "(Mean delay:", highest_mean_delay_value, "minutes)\n")
+
+```
 
     b\.
     Which carrier had the lowest mean arrival delay?
+    
+**Answer:**
+The carrier with the lowest mean arrival day at -9.930889 minutes is AS (Alaskan Airlines Inc.).
+
+```{r}
+#| label: lowest_mean_arrival
+#| eval: TRUE
+
+lowest_mean_delay_carrier <- names(mean_arr_delay)[which.min(mean_arr_delay)]
+
+lowest_mean_delay_value <- min(mean_arr_delay)
+
+cat("Carrier with the lowest mean arrival delay:", lowest_mean_delay_carrier, "(Mean delay:", lowest_mean_delay_value, "minutes)\n")
+
+
+```
+
+*Used information from weekly lecture notes (week 4) to remind myself how to catgorize(cat) two columns of a dataset.*
 
 4.  **Question 4 (10 points)** - What was the mean temperature at the origin airport on the day with the highest departure delay?
     Your answer should include the name of origin airport, the date with the highest departure delay, and the mean temperature on that day.
