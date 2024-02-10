@@ -226,11 +226,12 @@ cat("Mean temperature on that day:", round(mean_temp_origin, 2), "degrees Fahren
     a\.
     Calculate the proportion of flights that are delayed at departure at each of these time intervals.
 
+
     b\.
     Comment on how the likelihood of being delayed change throughout the day?
 
 6.  **Question 6 (15 points)** - Find the flight with the longest air time.
-
+   
     a\.
     How long is this flight?
 
@@ -239,6 +240,7 @@ cat("Mean temperature on that day:", round(mean_temp_origin, 2), "degrees Fahren
 
     c\.
     How many seats does the plane that flew this flight have?
+
 
 7.  **Question 7 (15 pts)** - The `airports` data frame contains information on a large number of primarily American airports.
     These data include location information for these airports in the form of latitude and longitude coordinates.
