@@ -262,6 +262,9 @@ flights %>%
 
     b\.
     Comment on how the likelihood of being delayed change throughout the day?
+    
+**Answer:**
+The later in the day the flight is, the more likely the flight is to be delayed.
 
 6.  **Question 6 (15 points)** - Find the flight with the longest air time.
    
