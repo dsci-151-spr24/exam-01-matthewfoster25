@@ -225,7 +225,40 @@ cat("Mean temperature on that day:", round(mean_temp_origin, 2), "degrees Fahren
 
     a\.
     Calculate the proportion of flights that are delayed at departure at each of these time intervals.
+    
+**Answer:**
+The following table shows that at the interval of 12:01am-6:01 am there is a 20.7% chance of delay, at the interval of 6:01am-12pm there is a 26& chance of delay, at the interval of 12:01pm-6pm there is an interval of 46.3% chance of delay, and at the interval of 6:01pm-12am there is a 52% chance of delay.
+   
+```{r}
+#| eval: TRUE
+#| message: false
 
+library(dplyr)
+```
+
+```{r}
+#| label: flights-time-interval
+#| eval: TRUE
+
+flights <- flights %>%
+  mutate(time_of_day = case_when(
+    sched_dep_time >= 001  & sched_dep_time <= 600  ~ "12:01am-6am",
+    sched_dep_time >= 601  & sched_dep_time <= 1200 ~ "6:01am-12pm",
+    sched_dep_time >= 1201 & sched_dep_time <= 1800 ~ "12:01pm-6pm",
+    sched_dep_time >= 1801                          ~ "6:01pm-12am"
+  ))
+
+flights %>%
+  filter(!is.na(dep_delay)) %>%
+  mutate(dep_delayed = ifelse(dep_delay > 0, "delayed", "ontime")) %>%
+  count(time_of_day, dep_delayed) %>%
+  group_by(time_of_day) %>%
+  mutate(prop_delayed = n / sum(n)) %>%
+  filter(dep_delayed == "delayed") %>%
+  arrange(prop_delayed)
+```
+
+*Used Chapter 18 of R for Data Science along with notes from previous lesson to understand mutation and dplyr functions.*
 
     b\.
     Comment on how the likelihood of being delayed change throughout the day?
