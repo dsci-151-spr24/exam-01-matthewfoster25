@@ -374,8 +374,34 @@ ggplot(contiguous_us_airports, aes(x = lon)) +
     *Hint:* The visualization uses the variable `arrival`, which is not included in the `flights` data frame.
     You will have to create `arrival` yourself, it is a categorical variable that is equal to `"ontime"` when `arr_delay <= 0` and `"delayed"` when `arr_delay > 0`.
 
+**Answer:**
+This visualization shows on-time flights of New York City during December of 2023 with destinations to PJL and RDU airports. The purpose of this may be to compare which airport destination experiences a greater number of delays.
+
+```{r}
+#| label: recreate-plot
+#| eval: true
+
+flights %>%
+  filter(month == 12, dest %in% c("PHL", "RDU")) %>%
+  mutate(arrival = ifelse(arr_delay > 0, "delayed", "ontime")) %>%
+  filter(!is.na(arrival)) %>%
+  ggplot(aes(x = arrival, y = dep_delay, color = dest)) +
+  geom_boxplot() +
+  facet_grid(dest ~ origin) +
+  labs(title = "On-time Performance of NYC Flights",
+       subtitle = "December 2013",
+       x = "Arrival",
+       y = "Departure Delay",
+       color = "Destination")
+```
+
+
 ![](img/plot-to-recreate.png)
+
+*Used R for Data Science Chapters 1 and 4 to figure out what type of ggplot2 graph it is and how to define it.*
 
 **Extra Credit (5 pts)** - Create a visualization that effectively shows if there is a relationship between the average daily departure delay and the average daily temperature for all three New York city airports.
 Your answer must be given in a single pipe.
 (You should only spend time on this question once you have finished answering the others)
+
+*Used https://en.wikipedia.org/wiki/Aviation_in_the_New_York_metropolitan_area#:~:text=Kennedy%20International%20Airport%20(JFK)%2C,refer%20to%20these%20three%20airports. to learn which airports are in New York City.*
