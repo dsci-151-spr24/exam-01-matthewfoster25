@@ -270,13 +270,52 @@ The later in the day the flight is, the more likely the flight is to be delayed.
    
     a\.
     How long is this flight?
+    
+**Answer:**
+The length of this flight was 695 minutes or 11 hours and 35 minutes.
+
+*Used calculator to divide 695 into hours.*
+    
+```{r}
+#| label: longest-air-time
+#| eval: true
+
+longest_airtime_flight <- flights[which.max(flights$air_time), ]
+
+longest_flight_duration <- longest_airtime_flight$air_time
+
+print(longest_flight_duration)
+```
 
     b\.
     What city did it fly to?
+    
+**Answer:**
+This flight went to Honolulu, Hawaii.
+    
+```{r}
+#| label: longest-air-time-city
+#| eval: true
+
+destination_city <- longest_airtime_flight$dest
+
+print(destination_city)
+```
 
     c\.
     How many seats does the plane that flew this flight have?
 
+**Answer:**
+The plane that flew this flight was plane N77066 which has 292 seats.
+
+```{r}
+#| label: longest-air-time-seats
+#| eval: true
+
+plane_tailnum <- longest_airtime_flight$tailnum
+
+print(plane_tailnum)
+```
 
 7.  **Question 7 (15 pts)** - The `airports` data frame contains information on a large number of primarily American airports.
     These data include location information for these airports in the form of latitude and longitude coordinates.
