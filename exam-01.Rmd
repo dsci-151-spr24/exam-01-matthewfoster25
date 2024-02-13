@@ -1,8 +1,10 @@
 ---
-title: "Take Home Exam #1"
+title: 'Take Home Exam #1'
 author: "Matthew Foster"
 date: "February 24, 2024"
-output: html_document
+output:
+  pdf_document:
+    latex_engine: xelatex
 ---
 
 ```{r}
