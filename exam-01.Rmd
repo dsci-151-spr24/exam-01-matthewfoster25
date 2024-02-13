@@ -337,6 +337,38 @@ The westernmost point in the contiguous states is Bodelteh Islands, offshore fro
     
 *Used both wikipedia links provided; https://en.wikipedia.org/wiki/Contiguous_United_States; https://en.wikipedia.org/wiki/List_of_extreme_points_of_the_United_States.*
 
+**Answer:**
+The following histogram shows that there is the greatest number of airports between the longitude of -90 and -80. Other longitudes with a greater number of airports include -75, -100, and -125.
+
+```{r}
+#| eval: TRUE
+#| message: false
+
+library(ggplot2)
+```
+
+```{r}
+#| label: airports-contiguous-us
+#| eval: true
+
+northern_boundary <- 49.3845
+southern_boundary <- 24.5208
+eastern_boundary <- -66.9476
+western_boundary <- -124.7717
+
+contiguous_us_airports <- airports %>%
+  filter(lat <= northern_boundary & lat >= southern_boundary &
+         lon <= eastern_boundary & lon >= western_boundary)
+
+ggplot(contiguous_us_airports, aes(x = lon)) +
+  geom_histogram() +
+  labs(title = "Airports Within the Contiguous United States",
+       x = "Longitude", y = "Count") +
+  theme_minimal()
+```
+
+*Used Chapter 9 of R for Data Science to remind me how to make a histogram.*
+
 8.  **Question 8 (15 pts)** - Recreate the plot included below using the `flights` data.
     Once you have created the visualization, in no more than one paragraph, describe what you think the point of this visualization might be.
     *Hint:* The visualization uses the variable `arrival`, which is not included in the `flights` data frame.
