@@ -325,6 +325,17 @@ print(plane_tailnum)
     *Hint:* You will first need to limit your analysis to the Contiguous United States.
     [This Wikipedia article](https://en.wikipedia.org/wiki/List_of_extreme_points_of_the_United_States) can help, but you're welcomed to use other resources as well.
     Make sure to cite whatever resource you use.
+    
+**Answer:**
+The northernmost point in the contiguous states is Northwest Angle Inlet in Lake of the Woods, Minnesota at (Lat) 49°23′04.1″N (Lon) 95°9′12.2″W.
+
+The southernmost point in the contiguous states is Ballast Key, Florida at (Lat) 24°31′15″N (Lon) 81°57′49″W .
+
+The easternmost point in the contiguous states is Sail Rock, Lubec, Maine at (Lat) 44°48′45.2″N (Lon) 66°56′49.3″W.
+
+The westernmost point in the contiguous states is Bodelteh Islands, offshore from Capa Alava, Washinton at (Lat) 48°10′42.7″N (Lon) 124°46′18.1″W
+    
+*Used both wikipedia links provided; https://en.wikipedia.org/wiki/Contiguous_United_States; https://en.wikipedia.org/wiki/List_of_extreme_points_of_the_United_States.*
 
 8.  **Question 8 (15 pts)** - Recreate the plot included below using the `flights` data.
     Once you have created the visualization, in no more than one paragraph, describe what you think the point of this visualization might be.
