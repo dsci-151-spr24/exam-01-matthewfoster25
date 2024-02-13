@@ -404,4 +404,7 @@ flights %>%
 Your answer must be given in a single pipe.
 (You should only spend time on this question once you have finished answering the others)
 
+**Answer:**
+After Posit crashed three times trying to complete this question, I felt it best not to do it.
+
 *Used https://en.wikipedia.org/wiki/Aviation_in_the_New_York_metropolitan_area#:~:text=Kennedy%20International%20Airport%20(JFK)%2C,refer%20to%20these%20three%20airports. to learn which airports are in New York City.*
